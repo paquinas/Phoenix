@@ -6,6 +6,6 @@ using .Types
 include("Draw.jl")
 using .Draw
 
-export Color, Triangle
+export Color, Vector2, Dot, Triangle
 
 end

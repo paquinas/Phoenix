@@ -374,6 +374,7 @@ uuid = "2f80f16e-611a-54ab-bc61-aa92de5b98fc"
 version = "8.45.0+0"
 
 [[deps.Phoenix]]
+deps = ["SimpleDirectMediaLayer"]
 path = "."
 uuid = "f17d5409-dc04-4134-a3ab-24137b9f3f25"
 version = "0.1.0"
