@@ -1,0 +1,10 @@
+name = "Phoenix"
+uuid = "f17d5409-dc04-4134-a3ab-24137b9f3f25"
+version = "0.1.0"
+authors = ["paquinas <241028570+paquinas@users.noreply.github.com>"]
+
+[deps]
+SimpleDirectMediaLayer = "98e33af6-2ee5-5afd-9e75-cbc738b767c4"
+
+[compat]
+SimpleDirectMediaLayer = "0.5.0"
