@@ -4,8 +4,11 @@ include("Types.jl")
 using .Types
 
 include("Draw.jl")
-using .Draw
+include("Window.jl")
+using .Draw, .Window
 
-export Color, Vector2, Dot, Triangle
+export Color, Vector2, Dot, Triangle, Frame, FrameFlag
+
+
 
 end
