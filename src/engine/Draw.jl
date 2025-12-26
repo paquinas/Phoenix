@@ -120,6 +120,28 @@ function Line(frame::Frame, p1::Vector2, p2::Vector2, width::Number, color::Colo
     TriangleFill(frame, Vector2(p1.x + nx, p1.y + ny), Vector2(p2.x + nx, p2.y + ny), Vector2(p2.x - nx, p2.y - ny), color)
 end
 
-export Triangle, TriangleFill, Circle, CircleFill, Rectangle, RectangleFill, Line
+function Polygon(frame::Frame, points::Vector{Vector2}, color::Color)
+    _points = Vector{SDL_Point}()
+
+    for p in points
+        append!(_points, [SDL_Point(p.x, p.y)])
+    end
+    append!(_points, [SDL_Point(points[1].x, points[1].y)])
+
+    SDL_SetRenderDrawColor(frame.renderer, color.r, color.g, color.b, color.a)
+    SDL_RenderDrawLines(frame.renderer, _points, Cint(length(_points)))
+    SDL_RenderPresent(frame.renderer)
+    ResetColor(frame)
+end
+
+function PolygonFill(frame::Frame, points::Vector{Vector2}, color::Color)
+    SDL_SetRenderDrawColor(frame.renderer, color.r, color.g, color.b, color.a)
+    
+    for i in 2:length(points)-1
+        TriangleFill(frame, points[1], points[i], points[i+1], color)
+    end
+end
+
+export Triangle, TriangleFill, Circle, CircleFill, Rectangle, RectangleFill, Line, Polygon, PolygonFill
 
 end

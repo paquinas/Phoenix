@@ -9,7 +9,7 @@ using .Window
 include("Draw.jl")
 using .Draw
 
-export Color, Vector2, Dot, Frame, FrameFlag, Clear, ResetColor, Window, Triangle, TriangleFill, Circle, CircleFill, Rectangle, RectangleFill, Line
+export Color, Vector2, Dot, Frame, FrameFlag, Clear, ResetColor, Window, Triangle, TriangleFill, Circle, CircleFill, Rectangle, RectangleFill, Line, Polygon, PolygonFill
 
 
 
