@@ -3,11 +3,13 @@ module Engine
 include("Types.jl")
 using .Types
 
-include("Draw.jl")
 include("Window.jl")
-using .Draw, .Window
+using .Window
 
-export Color, Vector2, Dot, Triangle, Frame, FrameFlag
+include("Draw.jl")
+using .Draw
+
+export Color, Vector2, Dot, Frame, FrameFlag, Clear, ResetColor, Window, Triangle, TriangleFill, Circle, CircleFill
 
 
 
