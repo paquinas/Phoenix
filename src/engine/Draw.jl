@@ -93,6 +93,25 @@ function CircleFill(frame::Frame, center::Vector2, radius::Number, color::Color)
     ResetColor(frame)
 end
 
-export Triangle, TriangleFill, Circle, CircleFill
+function Rectangle(frame::Frame, position::Vector2, size::Vector2, color::Color)
+    SDL_SetRenderDrawColor(frame.renderer, color.r, color.g, color.b, color.a)
+
+    rect = SDL_Rect(position.x, position.y, size.x, size.y)
+    SDL_RenderDrawRect(frame.renderer, Ref(rect))
+    SDL_RenderPresent(frame.renderer)
+    ResetColor(frame)
+end
+
+function RectangleFill(frame::Frame, position::Vector2, size::Vector2, color::Color)
+    SDL_SetRenderDrawColor(frame.renderer, color.r, color.g, color.b, color.a)
+
+    rect = SDL_Rect(position.x, position.y, size.x, size.y)
+    SDL_RenderFillRect(frame.renderer, Ref(rect))
+    SDL_RenderPresent(frame.renderer)
+    ResetColor(frame)
+end
+
+
+export Triangle, TriangleFill, Circle, CircleFill, Rectangle, RectangleFill
 
 end
