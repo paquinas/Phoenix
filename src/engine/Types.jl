@@ -38,6 +38,7 @@ end
 
 Base.:*(vector::Vector2, scalar::Number) = Vector2(vector.x * scalar, vector.y * scalar)
 Base.:*(scalar::Number, vector::Vector2) = Vector2(vector.x * scalar, vector.y * scalar)
+Base.:÷(vector::Vector2, scalar::Number) = Vector2(vector.x ÷ scalar, vector.y ÷ scalar)
 Base.:+(vector1::Vector2, vector2::Vector2) = Vector2(vector1.x + vector2.x, vector1.y + vector2.y)
 
 function Dot(vector1::Vector2, vector2::Vector2)
