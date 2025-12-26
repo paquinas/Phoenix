@@ -134,11 +134,36 @@ function Polygon(frame::Frame, points::Vector{Vector2}, color::Color)
     ResetColor(frame)
 end
 
+function isConvex(points::Vector{Vector2})
+    n = length(points)
+
+    last = 0
+    for i in 1:n
+        p1 = points[i]
+        p2 = points[mod1(i+1, n)]
+        p3 = points[mod1(i+2, n)]
+
+        cross = (p2.x - p1.x)*(p3.y - p2.y) - (p2.y - p1.y)*(p3.x - p2.x)
+        if cross != 0
+            if last == 0
+                last = cross
+            elseif last * cross < 0
+                return false
+            end
+        end
+    end
+
+    return true
+end
+
 function PolygonFill(frame::Frame, points::Vector{Vector2}, color::Color)
     SDL_SetRenderDrawColor(frame.renderer, color.r, color.g, color.b, color.a)
-    
-    for i in 2:length(points)-1
-        TriangleFill(frame, points[1], points[i], points[i+1], color)
+    if isConvex(points)   
+        for i in 2:length(points)-1
+            TriangleFill(frame, points[1], points[i], points[i+1], color)
+        end
+    else
+        print("WARNING: Concave Geometry Rendering is not supported")
     end
 end
 
