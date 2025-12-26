@@ -111,7 +111,15 @@ function RectangleFill(frame::Frame, position::Vector2, size::Vector2, color::Co
     ResetColor(frame)
 end
 
+function Line(frame::Frame, p1::Vector2, p2::Vector2, width::Number, color::Color)
+    length = sqrt((p2.x - p1.x)^2 + (p2.y - p1.y)^2)
+    nx = (p1.y - p2.y)/length * width/2
+    ny = (p2.x - p1.x)/length * width/2
 
-export Triangle, TriangleFill, Circle, CircleFill, Rectangle, RectangleFill
+    TriangleFill(frame, Vector2(p1.x + nx, p1.y + ny), Vector2(p1.x - nx, p1.y - ny), Vector2(p2.x - nx, p2.y - ny), color)
+    TriangleFill(frame, Vector2(p1.x + nx, p1.y + ny), Vector2(p2.x + nx, p2.y + ny), Vector2(p2.x - nx, p2.y - ny), color)
+end
+
+export Triangle, TriangleFill, Circle, CircleFill, Rectangle, RectangleFill, Line
 
 end
