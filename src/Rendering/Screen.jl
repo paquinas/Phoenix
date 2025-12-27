@@ -11,6 +11,7 @@ function Display()
     @assert !isnothing(Engine._WINDOW[]) "Initialize a window before attempting to modify it."
 
     SDL_RenderPresent(Engine._WINDOW[].renderer)
+    SDL_SetRenderDrawColor(Engine._WINDOW[].renderer, 0,0,0,0)
 end
 
 function Clear()

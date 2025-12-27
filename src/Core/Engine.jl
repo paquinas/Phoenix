@@ -15,10 +15,12 @@ end
 const _WINDOW = Ref{Union{Nothing, Window}}(nothing)
 
 function Init(title::String, position::Vector2, size::Vector2, flags::UInt32=0x00000000)
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 16)
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 16)
     SDL_Init(SDL_INIT_EVERYTHING)
 
     w = SDL_CreateWindow(title, position.x, position.y, size.x, size.y, flags)
-    r = SDL_CreateRenderer(w, -1, 0)
+    r = SDL_CreateRenderer(w, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)
 
     _WINDOW[] = Window(w, r, [])
 end
